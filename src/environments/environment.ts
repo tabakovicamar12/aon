@@ -7,4 +7,5 @@ export const environment: AonEnvironment = {
   useMockBackend: false,
   requestTimeoutMs: 20_000,
   heartbeatMs: 30_000,
+  hotjarSiteId: null, // TODO: vpiši Hotjar Site ID (npr. 1234567)
 };

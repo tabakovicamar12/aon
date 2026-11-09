@@ -8,4 +8,6 @@ export interface AonEnvironment {
   readonly requestTimeoutMs: number;
   /** Interval between connectivity heartbeats while online, ms. */
   readonly heartbeatMs: number;
+  /** Hotjar Site ID for usability analytics (heatmaps, recordings). null = Hotjar off. */
+  readonly hotjarSiteId: number | null;
 }
