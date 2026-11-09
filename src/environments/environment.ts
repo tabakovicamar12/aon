@@ -8,4 +8,5 @@ export const environment: AonEnvironment = {
   requestTimeoutMs: 20_000,
   heartbeatMs: 30_000,
   hotjarSiteId: 'b70ec26c940b2', // Hotjar / Contentsquare tag
+  clarityProjectId: 'zb26tx6pbf', // Microsoft Clarity
 };

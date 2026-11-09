@@ -8,4 +8,5 @@ export const environment: AonEnvironment = {
   requestTimeoutMs: 20_000,
   heartbeatMs: 30_000,
   hotjarSiteId: null,
+  clarityProjectId: null,
 };

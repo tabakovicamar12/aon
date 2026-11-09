@@ -10,4 +10,6 @@ export interface AonEnvironment {
   readonly heartbeatMs: number;
   /** Hotjar tag: Contentsquare tag id (text) or legacy numeric Site ID. null = Hotjar off. */
   readonly hotjarSiteId: number | string | null;
+  /** Microsoft Clarity project ID (heatmaps, recordings). null = Clarity off. */
+  readonly clarityProjectId: string | null;
 }
