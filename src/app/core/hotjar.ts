@@ -21,3 +21,24 @@ export function loadHotjar(id: number | string | null): void {
   }
   document.head.appendChild(script);
 }
+
+/** Record IDs in the URL (orders, reports) collapse to ":id" so every detail page shares one heatmap. */
+export function pageviewPath(url: string): string {
+  const path = url.split(/[?#]/)[0] || '/';
+  return path
+    .split('/')
+    .map((seg) => (/^[0-9a-f]{8}-[0-9a-f-]{27,}$/i.test(seg) || /^[a-z]{1,4}-[0-9a-z-]{6,}$/i.test(seg) || /^\d{3,}$/.test(seg) ? ':id' : seg))
+    .join('/');
+}
+
+/**
+ * The app is a single page: Contentsquare sees only the first page on its own, so every later
+ * in-app navigation is reported as an artificial pageview.
+ */
+export function trackPageview(url: string): void {
+  if (typeof window === 'undefined') return;
+  const uxa = (window as unknown as { _uxa?: unknown[] })._uxa;
+  if (Array.isArray(uxa) || (uxa && typeof (uxa as { push?: unknown }).push === 'function')) {
+    (uxa as { push(v: unknown): void }).push(['trackPageview', pageviewPath(url)]);
+  }
+}
